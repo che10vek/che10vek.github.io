@@ -1,0 +1,105 @@
+<html>
+
+<!--
+    
+    Note to Students:
+
+        This is a very short introduction to using Javascript in the browser.
+
+        To see this as a webpage, you have to start a *Local Web Server*. There are many ways to do this: since you all have python installed, we will use python.
+
+        - Open terminal
+
+        - 'cd' into the directory where this html file is (js_in_webpage.html)
+
+        - Type the following into the terminal and hit 'enter':
+            python -m SimpleHTTPServer
+
+            your server should read something like: Serving HTTP on 0.0.0.0 port 8000 ...
+
+        - now go to any browser and type in the HTTP address and the filename: something like:
+
+            http://0.0.0.0:8000/js_in_webpage.html
+
+            or
+
+            http://localhost:8000/js_in_webpage.html
+        
+        - Congrats: you now have a local HTTP server running. Now, every time you change this file and save it, when you reload the browser you will see your changes!
+-->
+
+<head><title>Data 608 Module 5</title></head>
+
+<body>
+
+<h1>Data 608 Module 5</h1>
+<h3>Elina Azrilyan </h3>
+<h3>April 16, 2021 </h3>
+
+
+<script type="text/javascript">
+
+document.write('<br><p>Please enter text in order to reverse it')
+
+function reverseText(text) {
+  return text.split("").reverse().join("");
+}
+
+function reversedText(){
+    var t = document.getElementById("reversed-text");
+    t.innerHTML = reverseText(document.getElementById("text").value);
+}
+</script>
+<p>
+<form>
+    <input id="text" type="text" size="30">
+    <input type="button" value="Reverse text" onClick="reversedText();">
+</form>
+</p>
+
+<div id="reversed-text"></div>
+
+
+<script type="text/javascript">
+
+document.write('<br><p>Please enter number')
+
+function buildTable(col, rows, number){
+ var tbl= document.createElement("table"),
+     multiplier = 1;
+    for (var i = 1; i <= rows; i++) {
+      var tr = tbl.insertRow();
+      for(var j = 1; j<=col; j++){
+       var td = tr.insertCell(); 
+       td.appendChild(document.createTextNode(number * multiplier));
+       multiplier += 1;
+      } 
+    }
+    
+  return tbl;
+}
+function displayTable() {
+  var num = document.getElementById("num").value,
+      table = document.getElementById("table");
+  table.innerHTML = '';    
+  table.appendChild(buildTable(4,5,num));
+}
+</script>
+<p>
+<form>
+    <input id="num" type="number" size="10">
+    <input type="button" value="Build table" onClick="displayTable()">
+</form>
+</p>
+
+<div id="table"></div>
+
+<script type="text/javascript">
+
+document.write('<br><p>Reference: https://stackoverflow.com/questions/30426969/display-javascript-variable-in-html-body')
+
+</script>
+
+
+</body>
+</html>
